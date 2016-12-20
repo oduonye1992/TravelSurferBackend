@@ -9,7 +9,11 @@ use Validator;
 class InternetPriceOrderController extends Controller
 {
     public function read(){
-        return InternetPriceOrder::all();
+        return InternetPriceOrder::with([
+            'roomType',
+            'boardingType',
+            'searchOrder'
+        ])->get();
     }
     public function add(Request $request) {
         $rules = [

@@ -23,6 +23,7 @@ Route::group(['prefix' => 'country'], function () {
 
 Route::group(['prefix' => 'hotels'], function () {
     Route::get('', 'HotelsController@read');
+    Route::get('suggest', 'HotelsController@suggest');
     Route::post('', 'HotelsController@add');
     Route::get('/{hotel}', 'HotelsController@getByID');
     Route::put('/{hotel}', 'HotelsController@update');
@@ -31,6 +32,7 @@ Route::group(['prefix' => 'hotels'], function () {
 
 Route::group(['prefix' => 'airports'], function () {
     Route::get('', 'AirportsController@read');
+    Route::get('suggest', 'AirportsController@suggest');
     Route::post('', 'AirportsController@add');
     Route::get('/{airport}', 'AirportsController@getByID');
     Route::put('/{airport}', 'AirportsController@update');

@@ -19,7 +19,7 @@ class InternetPriceOrder extends Model
         'booking_url'
     ];
     public function RoomType(){
-        return $this->belongsTo('App\RoomType', 'room_type');
+        return $this->belongsTo('App\HotelRoomType', 'room_type');
     }
     public function BoardingType(){
         return $this->belongsTo('App\BoardingType', 'boarding_type');

@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
 class AirportsController extends Controller
 {
     public function read(){
-        return Airport::all();
+        return Airport::with(['country'])->get();
+    }
+    public function suggest(Request $request){
+        $q = $request->q;
+        return Airport::where('name', 'like', "%$q")->with(['country'])->get();
     }
     public function add(Request $request) {
         $rules = [

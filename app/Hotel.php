@@ -17,4 +17,10 @@ class Hotel extends Model
     public function Country(){
         return $this->belongsTo('App\Country', 'country_id');
     }
+    public function Images(){
+        return $this->hasMany('App\HotelImages', 'hotel_id');
+    }
+    public function Rooms(){
+        return $this->hasMany('App\HotelRoomType', 'hotel_id');
+    }
 }

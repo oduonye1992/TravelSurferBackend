@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
 class HotelsController extends Controller
 {
     public function read(){
-        return Hotel::all();
+        return Hotel::with(['country', 'images', 'rooms'])->get();
+    }
+    public function suggest(Request $request){
+        $q = $request->q;
+        return Hotel::where('name', 'like', "%$q")->with(['country', 'images', 'rooms'])->get();
     }
     public function add(Request $request) {
         $rules = [

@@ -25,7 +25,13 @@ class SearchOrder extends Model
     public function Airport(){
         return $this->belongsTo('App\Airport', 'airport_id');
     }
+    public function Children(){
+        return $this->hasMany('App\SearchOrderChildren', 'search_order_id');
+    }
     public function RoomType(){
-        return $this->belongsTo('App\RoomType', 'room_type');
+        return $this->belongsTo('App\HotelRoomType', 'room_type');
+    }
+    public function BoardingType(){
+        return $this->belongsTo('App\BoardingType', 'boarding_type');
     }
 }

@@ -9,7 +9,13 @@ use Validator;
 class SearchOrderController extends Controller
 {
     public function read(){
-        return SearchOrder::all();
+        return SearchOrder::with([
+            'hotel',
+            'airport',
+            'children',
+            'roomType',
+            'boardingType'
+        ])->get();
     }
     public function add(Request $request) {
         $rules = [

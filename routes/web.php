@@ -11,3 +11,6 @@
 |
 */
 
+Route::get('docs', function(){
+    return view('index');
+});
