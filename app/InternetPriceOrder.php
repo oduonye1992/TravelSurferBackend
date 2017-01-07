@@ -27,4 +27,7 @@ class InternetPriceOrder extends Model
     public function SearchOrder(){
         return $this->belongsTo('App\SearchOrder', 'search_order_id');
     }
+    public function Hotel(){
+        return $this->belongsTo('App\Hotel', 'hotel_id');
+    }
 }

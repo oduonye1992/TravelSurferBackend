@@ -22,10 +22,12 @@ class CreateSearchOrderTable extends Migration
             $table->date('end_date');
             $table->integer('room_type')->unsigned();
             $table->boolean('boarding');
+            $table->boolean('transport')->nullable();
             $table->integer('adults');
             $table->integer('children');
             // Meta Data
             $table->string('email')->nullable();
+            $table->string('uuid');
 
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->foreign('airport_id')->references('id')->on('airports');

@@ -8,8 +8,11 @@ class SplashScreen extends Model
 {
     protected $table = "splashscreen";
     protected $fillable = [
-        'image',
+        'img',
         'title',
-        'description'
+        'description',
+        'backgroundColor',
+        'fontColor',
+        'level'
     ];
 }

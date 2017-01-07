@@ -12,7 +12,30 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+/*
+/hotels
+/airports
+/country
+/hotel_image
+/hotel_room_type
+/hotel_room_type
+/boarding_type
+/internet_price_order
+/search_order
+/special_search_order
+/splash_screen
 
+Methods (using /country as an example)
+GET /country
+POST /country
+GET /country/1
+PUT /country/1
+DELETE /country/1
+
+The required fields will be stated when you attempt to post
+For /hotels and /airports, there is an additional endpoint called
+GET /suggest
+*/
 Route::group(['prefix' => 'country'], function () {
     Route::get('', 'CountryController@read');
     Route::post('', 'CountryController@add');

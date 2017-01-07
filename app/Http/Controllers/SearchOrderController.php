@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\SearchOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Validator;
 
 class SearchOrderController extends Controller
@@ -18,6 +19,7 @@ class SearchOrderController extends Controller
         ])->get();
     }
     public function add(Request $request) {
+        Log::info('Submitting search order for: '.json_encode($request->all()));
         $rules = [
             'hotel_id' => 'required|integer|exists:hotels,id',
             'airport_id' => 'required|integer|exists:airports,id',
@@ -25,8 +27,10 @@ class SearchOrderController extends Controller
             'end_date' => 'required|date',
             'room_type' => 'required|integer|exists:hotels_room_type,id',
             'boarding' => 'required|boolean',
+            //'transport' => 'required|boolean',
             'adults' => 'required|integer',
-            'children' => 'required|integer'
+            'children' => 'required|integer',
+            //'uuid' => 'required'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {

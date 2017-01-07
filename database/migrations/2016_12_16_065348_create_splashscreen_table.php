@@ -16,9 +16,12 @@ class CreateSplashscreenTable extends Migration
         Schema::create('splashscreen', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('image')->nullable();
+            $table->longText('img')->nullable();
+            $table->string('backgroundColor')->nullable();
             $table->string('title')->nullable();
+            $table->string('fontColor')->nullable();
             $table->string('description')->nullable();
+            $table->integer('level')->nullable();
         });
     }
 

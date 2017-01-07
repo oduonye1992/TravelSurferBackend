@@ -12,6 +12,7 @@ class HotelsController extends Controller
         return Hotel::with(['country', 'images', 'rooms'])->get();
     }
     public function suggest(Request $request){
+        return $this->read();
         $q = $request->q;
         return Hotel::where('name', 'like', "%$q")->with(['country', 'images', 'rooms'])->get();
     }
@@ -34,5 +35,8 @@ class HotelsController extends Controller
     }
     public function update(Hotel $item,  Request $request){
         return ['status' => $item->update($request->all())];
+    }
+    public function delete(Hotel $item,  Request $request){
+        return ['status' => $item->delete()];
     }
 }

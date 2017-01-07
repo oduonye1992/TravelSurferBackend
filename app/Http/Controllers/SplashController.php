@@ -12,7 +12,14 @@ class SplashController extends Controller
         return SplashScreen::all();
     }
     public function add(Request $request) {
-        $rules = [];
+        $rules = [
+            'img' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'backgroundColor' => 'required',
+            'fontColor' => 'required',
+            'level' => 'required|integer'
+        ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             return $validator->errors()->all();
@@ -26,6 +33,8 @@ class SplashController extends Controller
         return ['status' => $item->update($request->all())];
     }
     public function delete(SplashScreen $item){
-        return $item->delete();
+        return [
+            'status' => $item->delete()
+        ];
     }
 }

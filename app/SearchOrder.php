@@ -17,7 +17,9 @@ class SearchOrder extends Model
         'boarding_type',
         'adults',
         'children',
-        'email'
+        'email',
+        //'transport',
+        //'uuid'
     ];
     public function Hotel(){
         return $this->belongsTo('App\Hotel', 'hotel_id');
@@ -33,5 +35,11 @@ class SearchOrder extends Model
     }
     public function BoardingType(){
         return $this->belongsTo('App\BoardingType', 'boarding_type');
+    }
+    public function InternetPriceOrder(){
+        return $this->hasMany('App\InternetPriceOrder', 'search_order_id');
+    }
+    public function SpecialPriceOrder(){
+        return $this->hasMany('App\SpecialPriceOrder', 'search_order_id');
     }
 }

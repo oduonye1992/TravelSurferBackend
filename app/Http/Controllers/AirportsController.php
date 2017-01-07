@@ -12,6 +12,7 @@ class AirportsController extends Controller
         return Airport::with(['country'])->get();
     }
     public function suggest(Request $request){
+        return $this->read();
         $q = $request->q;
         return Airport::where('name', 'like', "%$q")->with(['country'])->get();
     }
@@ -32,5 +33,8 @@ class AirportsController extends Controller
     }
     public function update(Airport $airport,  Request $request){
         return ['status' => $airport->update($request->all())];
+    }
+    public function delete(Airport $item,  Request $request){
+        return ['status' => $item->delete()];
     }
 }
