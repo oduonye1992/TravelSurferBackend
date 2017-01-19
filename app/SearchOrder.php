@@ -19,7 +19,7 @@ class SearchOrder extends Model
         'children',
         'email',
         //'transport',
-        //'uuid'
+        'uuid'
     ];
     public function Hotel(){
         return $this->belongsTo('App\Hotel', 'hotel_id');

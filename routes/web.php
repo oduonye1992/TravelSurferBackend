@@ -24,11 +24,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('countries', 'ViewController@countries');
     Route::get('splash', 'ViewController@splashScreen');
     Route::get('search_order', 'ViewController@searchOrders');
+    Route::get('search_order/{search_order}/internet_order', 'ViewController@internetOrders');
+    Route::get('search_order/{search_order}/special_order', 'ViewController@specialOrders');
     // Search Orders
     // Countries
     // Search Orders
 });
 Route::model('hotel', 'App\Hotel');
+Route::model('search_order', 'App\SearchOrder');
 /**
  * [{"id":1,
  * "created_at":"2017-01-02 15:07:13",
