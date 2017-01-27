@@ -374,7 +374,9 @@
                 boarding_type : $('#boarding_type').val(),
                 room_type: $('#room_type').val(),
                 booking_url: $('#booking_url').val(),
-                search_order_id : {{$search_order->id}}
+                search_order_id : {{$search_order->id}},
+                hotel_id : {{$search_order->hotel_id}},
+                airport_id : {{$search_order->airport_id}}
             }
         }
 

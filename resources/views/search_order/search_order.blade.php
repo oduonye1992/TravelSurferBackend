@@ -109,9 +109,9 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu" style="width: 141px;">
-                                        <li><a href={{url("search_order/".$order['id']."/internet_order")}} data-obj="{{json_encode($order)}}">Add Internet Offer</a>
+                                        <li><a href={{url("admin/search_order/".$order['id']."/internet_order")}} data-obj="{{json_encode($order)}}">Add Internet Offer</a>
                                         </li>
-                                        <li><a href={{url("search_order/".$order['id']."/special_order")}} data-obj="{{json_encode($order)}}">Add Special Price Offer</a>
+                                        <li><a href={{url("admin/search_order/".$order['id']."/special_order")}} data-obj="{{json_encode($order)}}">Add Special Price Offer</a>
                                         </li>
                                     </ul>
                                 </div>

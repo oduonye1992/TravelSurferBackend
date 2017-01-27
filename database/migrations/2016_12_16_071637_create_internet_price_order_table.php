@@ -25,10 +25,14 @@ class CreateInternetPriceOrderTable extends Migration
             $table->integer('boarding_type')->unsigned();
             $table->integer('room_type')->unsigned();
             $table->string('booking_url')->nullable();
+            $table->string('hotel_id')->nullable();
+            $table->string('airport_id')->nullable();
 
             $table->foreign('search_order_id')->references('id')->on('search_orders');
             $table->foreign('boarding_type')->references('id')->on('boarding_types');
             $table->foreign('room_type')->references('id')->on('hotels_room_type');
+            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->foreign('airport_id')->references('id')->on('airports');
 
         });
     }
