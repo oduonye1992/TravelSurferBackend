@@ -16,7 +16,9 @@ class InternetPriceOrder extends Model
         'travel_end_date',
         'boarding_type',
         'room_type',
-        'booking_url'
+        'booking_url',
+        'hotel_id',
+        'airport_id'
     ];
     public function RoomType(){
         return $this->belongsTo('App\HotelRoomType', 'room_type');

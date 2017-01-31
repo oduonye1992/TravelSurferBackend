@@ -18,7 +18,7 @@ class CreateHotelsRoomTypeTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->integer('hotel_id')->unsigned();
-            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->foreign('hotel_id')->references('id')->on('hotels')->cascade('delete');
         });
     }
 

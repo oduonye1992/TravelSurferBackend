@@ -12,7 +12,10 @@ class Hotel extends Model
         'longitude',
         'latitude',
         'description',
-        'country_id'
+        'country_id',
+        'location',
+        'phone',
+        'email',
     ];
     public function Country(){
         return $this->belongsTo('App\Country', 'country_id');

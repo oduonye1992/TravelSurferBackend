@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Airport;
+use App\BoardingType;
 use App\Country;
 use App\Hotel;
 use App\HotelImages;
 use App\HotelRoomType;
+use App\InternetPriceOrder;
 use App\SearchOrder;
+use App\SpecialPriceOrder;
 use App\SplashScreen;
 use Illuminate\Http\Request;
 
@@ -50,5 +53,23 @@ class ViewController extends Controller
             'specialPriceOrder'
         ])->get()->toArray();
         return view('search_order.search_order', ['orders' => $orders]);
+    }
+    public function internetOrders(SearchOrder $order){
+        $internet_order = InternetPriceOrder::where('search_order_id', $order->id)->with(['roomType', 'boardingType', 'hotel'])->get()->toArray();
+        //get hotel id
+        $hotel = $order->hotel_id;
+        // roomtype
+        $rooms = HotelRoomType::where('hotel_id', $hotel)->get();
+        $boardings = BoardingType::all();
+        return view('internet_order.internet_order', ['orders' => $internet_order, 'search_order' => $order, 'boardings'=>$boardings, 'rooms'=>$rooms]);
+    }
+    public function specialOrders(SearchOrder $order){
+        $internet_order = SpecialPriceOrder::where('search_order_id', $order->id)->with(['roomType', 'boardingType', 'hotel'])->get()->toArray();
+        //get hotel id
+        $hotel = $order->hotel_id;
+        // roomtype
+        $rooms = HotelRoomType::where('hotel_id', $hotel)->get();
+        $boardings = BoardingType::all();
+        return view('internet_order.internet_order', ['orders' => $internet_order, 'search_order' => $order, 'boardings'=>$boardings, 'rooms'=>$rooms]);
     }
 }

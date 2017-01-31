@@ -66,6 +66,9 @@
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Location</th>
+                        <th>Phone</th>
+                        <th>Email</th>
                         <th>Country</th>
                         <th>Options</th>
                     </tr>
@@ -80,6 +83,15 @@
                                 <p>{{$hotel['description']}}</p>
                             </td>
                             <td class="v-align-middle">
+                                <p>{{$hotel['location']}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{$hotel['phone']}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{$hotel['email']}}</p>
+                            </td>
+                            <td class="v-align-middle">
                                 <p>{{$hotel['country']['title']}}</p>
                             </td>
                             <td class="v-align-middle">
@@ -91,14 +103,15 @@
                                     <ul class="dropdown-menu" role="menu" style="width: 141px;">
                                         <li><a data-obj="{{json_encode($hotel)}}" class="edit-btn" href="#">Edit Hotel</a>
                                         </li>
-                                        <li><a href="{{url('hotel/'.$hotel['id'].'/images')}}">Add Images</a>
+                                        <li><a href="{{url('admin/hotels/'.$hotel['id'].'/images')}}">Add Images</a>
                                         </li>
-                                        <li><a href="{{url('hotel/'.$hotel['id'].'/room')}}">Add Room Type</a>
+                                        <li><a href="{{url('admin/hotels/'.$hotel['id'].'/rooms')}}">Add Room Type</a>
                                         </li>
                                         <li><a href="#" data-id="{{$hotel['id']}}" class="delete-btn btn-danger btn btn-cons">Delete Hotel</a>
                                         </li>
                                     </ul>
                                 </div>
+
                             </td>
                         </tr>
                     @endforeach
@@ -142,6 +155,30 @@
                                         <div class="form-group form-group-default">
                                             <label>Description</label>
                                             <textarea id="description" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Location</label>
+                                            <input id="location" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Phone</label>
+                                            <input id="phone" type="number" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input id="email" type="email" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -232,6 +269,9 @@
             $('#country').val(data.country_id);
             $('#longitude').val(data.longitude);
             $('#latitude').val(data.latitude);
+            $('#location').val(data.location);
+            $('#phone').val(data.phone);
+            $('#email').val(data.email);
             // Update mode to edit
             $('#save-btn').attr('data-mode', 'edit').attr('data-id', data.id);
             $('#modalSlideUp').modal('toggle');
@@ -241,6 +281,9 @@
             $('#description').val('');
             $('#longitude').val('');
             $('#latitude').val('');
+            $('#location').val('');
+            $('#phone').val('');
+            $('#email').val('');
             $('#modalSlideUp').modal('toggle');
             // Hide the delete button
             $('#delete-btn').hide();
@@ -306,7 +349,10 @@
                 description : $('#description').val(),
                 country_id : $('#country').val(),
                 longitude : $('#longitude').val(),
-                latitude : $('#latitude').val()
+                latitude : $('#latitude').val(),
+                location : $('#location').val(),
+                phone : $('#phone').val(),
+                email : $('#email').val(),
             }
         }
 

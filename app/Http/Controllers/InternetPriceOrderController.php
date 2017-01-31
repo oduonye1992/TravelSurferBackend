@@ -24,7 +24,9 @@ class InternetPriceOrderController extends Controller
             'baggage' => 'required|boolean',
             'travel_start_date' => 'required|date',
             'travel_end_date' => 'required|date',
-            'boarding_type' => 'required|integer|exists:boarding_types,id',
+            'boarding_type' => 'required',
+            'hotel_id' => 'required|integer|exists:hotels,id',
+            'airport_id' => 'required|integer|exists:airports,id',
             'booking_url' => 'required',
             'room_type' => 'required|integer|exists:hotels_room_type,id'
         ];

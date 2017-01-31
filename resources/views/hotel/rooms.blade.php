@@ -159,7 +159,7 @@
     <script src="{{asset('assets/js/datatables.js')}}" type="text/javascript"></script>
     <script>
         // Create
-        var endpoint = "{{url('api/hotel_image')}}/";
+        var endpoint = "{{url('api/hotel_room_type')}}/";
         $('#add-btn').click(function(){
             openModal('new');
         });
@@ -190,7 +190,6 @@
         }
         function openModal(){
             $('#name').val('');
-
             $('#modalSlideUp').modal('toggle');
             $('#delete-btn').hide();
         }
