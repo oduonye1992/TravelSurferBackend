@@ -32,7 +32,6 @@ class CreateInternetPriceOrderTable extends Migration
             $table->foreign('room_type')->references('id')->on('hotels_room_type');
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->foreign('airport_id')->references('id')->on('airports');
-
         });
     }
 

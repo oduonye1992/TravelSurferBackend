@@ -131,4 +131,6 @@ Route::model('search_order', 'App\SearchOrder');
 Route::model('search_order_children', 'App\SearchOrderChildren');
 Route::model('special_search_order', 'App\SpecialSearchOrder');
 Route::model('splash_screen', 'App\SplashScreen');
-
+/*
+ * jarsigner -verbose -keystore debug.keystore formelo324.apk sampleName
+ */

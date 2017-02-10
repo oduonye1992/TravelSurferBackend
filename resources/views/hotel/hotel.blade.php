@@ -109,7 +109,7 @@
                                         </li>
                                         <li><a href="#" data-id="{{$hotel['id']}}" class="delete-btn btn-danger btn btn-cons">Delete Hotel</a>
                                         </li>
-                                    </ul>
+                                    </ul>8
                                 </div>
 
                             </td>

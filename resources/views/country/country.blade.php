@@ -208,7 +208,7 @@
             $.when(fetch(options))
                     .done(function(data){
                         console.log(data);
-                        location.reload();
+                        // location.reload();
                     })
                     .fail(function(err){
                         console.error(err);
@@ -223,7 +223,7 @@
             $.when(fetch(options))
                     .done(function(data){
                         console.log(data);
-                        location.reload();
+                        // location.reload();
                     })
                     .fail(function(err){
                         console.error(err);
@@ -241,7 +241,7 @@
             $.when(fetch(options))
                     .done(function(data){
                         console.log(data);
-                        location.reload();
+                        // location.reload();
                     })
                     .fail(function(err){
                         console.error(err);
