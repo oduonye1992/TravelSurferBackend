@@ -312,7 +312,7 @@
         }
         function deleteForm(id){
             var options = {
-                url : "{{url('api/hotels/')}}/"+id,
+                url : "{{url('api/hotels')}}/"+id,
                 method : 'DELETE'
             };
             $.when(fetch(options))
@@ -328,7 +328,7 @@
         function update(id){
             var data = getValues();
             var options = {
-                url : "{{url('api/hotels/')}}/"+id,
+                url : "{{url('api/hotels')}}/"+id,
                 data : data,
                 method : 'PUT'
             };

@@ -158,7 +158,7 @@
     <script src="{{asset('assets/js/datatables.js')}}" type="text/javascript"></script>
     <script>
         // Create
-        var endpoint = "{{url('api/country')}}/";
+        var endpoint = "{{url('api/country')}}";
         $('#add-btn').click(function(){
             openModal('new');
         });
@@ -208,7 +208,7 @@
             $.when(fetch(options))
                     .done(function(data){
                         console.log(data);
-                        // location.reload();
+                        location.reload();
                     })
                     .fail(function(err){
                         console.error(err);
@@ -217,13 +217,13 @@
         }
         function deleteForm(id){
             var options = {
-                url : endpoint+id,
+                url : endpoint+'/'+id,
                 method : 'DELETE'
             };
             $.when(fetch(options))
                     .done(function(data){
                         console.log(data);
-                        // location.reload();
+                        location.reload();
                     })
                     .fail(function(err){
                         console.error(err);
@@ -233,7 +233,7 @@
         function update(id){
             var data = getValues();
             var options = {
-                url : endpoint+id,
+                url : endpoint+'/'+id,
                 data : data,
                 method : 'PUT'
             };
@@ -241,7 +241,7 @@
             $.when(fetch(options))
                     .done(function(data){
                         console.log(data);
-                        // location.reload();
+                        location.reload();
                     })
                     .fail(function(err){
                         console.error(err);

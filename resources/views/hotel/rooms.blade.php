@@ -159,7 +159,7 @@
     <script src="{{asset('assets/js/datatables.js')}}" type="text/javascript"></script>
     <script>
         // Create
-        var endpoint = "{{url('api/hotel_room_type')}}/";
+        var endpoint = "{{url('api/hotel_room_type')}}";
         $('#add-btn').click(function(){
             openModal('new');
         });
@@ -200,7 +200,7 @@
         }
         function save(data){
             var options = {
-                url : endpoint,
+                url : endpoint+'/'+id,
                 data : data,
                 method : 'POST'
             };
@@ -217,7 +217,7 @@
         }
         function deleteForm(id){
             var options = {
-                url : endpoint+id,
+                url : endpoint+'/'+id,
                 method : 'DELETE'
             };
             $.when(fetch(options))
