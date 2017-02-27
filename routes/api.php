@@ -131,9 +131,9 @@ Route::model('search_order', 'App\SearchOrder');
 Route::model('search_order_children', 'App\SearchOrderChildren');
 Route::model('special_search_order', 'App\SpecialSearchOrder');
 Route::model('splash_screen', 'App\SplashScreen');
+
 /*
  * jarsigner -verbose -keystore debug.keystore formelo324.apk sampleName
  * git config --global user.email "contactdanny19@gmail.com"
-git config --global user.name "oduonye1992"
-
+ * git config --global user.name "oduonye1992"
  */
