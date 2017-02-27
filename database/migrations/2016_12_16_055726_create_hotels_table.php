@@ -20,6 +20,9 @@ class CreateHotelsTable extends Migration
             $table->string('longitude');
             $table->string('latitude');
             $table->longText('description');
+            $table->longText('location')->nullable();
+            $table->longText('phone')->nullable();
+            $table->longText('email')->nullable();
             $table->integer('country_id')->unsigned();
             $table->foreign('country_id')->references('id')->on('countries');
         });

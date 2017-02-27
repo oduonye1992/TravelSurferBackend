@@ -199,7 +199,7 @@
     <script src="{{asset('assets/js/datatables.js')}}" type="text/javascript"></script>
     <script>
         // Create
-        var endpoint = "{{url('api/airports')}}/";
+        var endpoint = "{{url('api/airports')}}";
         $('#add-btn').click(function(){
             openModal('new');
         });
@@ -263,7 +263,7 @@
         }
         function deleteForm(id){
             var options = {
-                url : endpoint+id,
+                url : endpoint+'/'+id,
                 method : 'DELETE'
             };
             $.when(fetch(options))
@@ -279,7 +279,7 @@
         function update(id){
             var data = getValues();
             var options = {
-                url : endpoint+id,
+                url : endpoint+'/'+id,
                 data : data,
                 method : 'PUT'
             };

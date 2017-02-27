@@ -194,11 +194,19 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
+<<<<<<< HEAD
                                             <label>Room Type</label>
                                             <select id="boarding_type" class="form-control">
                                                 @foreach($boardings as $boarding)
                                                     <option value="{{$boarding->id}}">{{$boarding->name}}</option>
                                                     @endforeach
+=======
+                                            <label>Boarding Type</label>
+                                            <select id="boarding_type" class="form-control">
+                                                <option value="1">Full</option>
+                                                <option value="2">Weekly</option>
+                                                <option value="3">Maxi</option>
+>>>>>>> bb934f22b25715dcc12315e022b01c022f0c8afb
                                             </select>
                                         </div>
                                     </div>
@@ -258,7 +266,11 @@
     <script src="{{asset('assets/js/datatables.js')}}" type="text/javascript"></script>
     <script>
         // Create
+<<<<<<< HEAD
         var endpoint = "{{url('api/internet_price_order')}}/";
+=======
+        var endpoint = "{{url('api/internet_price_order')}}";
+>>>>>>> bb934f22b25715dcc12315e022b01c022f0c8afb
         $('#add-btn').click(function(){
             openModal('new');
         });
@@ -333,7 +345,11 @@
         }
         function deleteForm(id){
             var options = {
+<<<<<<< HEAD
                 url : endpoint+id,
+=======
+                url : endpoint+'/'+id,
+>>>>>>> bb934f22b25715dcc12315e022b01c022f0c8afb
                 method : 'DELETE'
             };
             $.when(fetch(options))
@@ -349,7 +365,11 @@
         function update(id){
             var data = getValues();
             var options = {
+<<<<<<< HEAD
                 url : endpoint+id,
+=======
+                url : endpoint+'/'+id,
+>>>>>>> bb934f22b25715dcc12315e022b01c022f0c8afb
                 data : data,
                 method : 'PUT'
             };
