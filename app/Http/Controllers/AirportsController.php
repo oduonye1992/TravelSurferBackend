@@ -12,9 +12,8 @@ class AirportsController extends Controller
         return Airport::with(['country'])->get();
     }
     public function suggest(Request $request){
-        return $this->read();
         $q = $request->q;
-        return Airport::where('name', 'like', "%$q")->with(['country'])->get();
+        return Airport::where('name', 'like', "%$q%")->with(['country'])->get();
     }
     public function add(Request $request) {
         $rules = [

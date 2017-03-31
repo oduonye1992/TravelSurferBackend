@@ -8,41 +8,12 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Tables</a>
+                        <a href="#">Search Order</a>
                     </li>
-                    <li><a href="#" class="active">Data Tables</a>
+                    <li><a href="#" class="active">Special Price Order</a>
                     </li>
                 </ul>
                 <!-- END BREADCRUMB -->
-                <div class="row">
-                    <div class="col-lg-7 col-md-6 ">
-                        <!-- START PANEL -->
-                        <div class="full-height">
-                            <div class="panel-body text-center">
-                                <img class="image-responsive-height demo-mw-600" src="{{asset('assets/img/demo/tables.jpg')}}" alt="">
-                            </div>
-                        </div>
-                        <!-- END PANEL -->
-                    </div>
-                    <div class="col-lg-5 col-md-6 ">
-                        <!-- START PANEL -->
-                        <div class="panel panel-transparent">
-                            <div class="panel-heading">
-                                <div class="panel-title">Getting started
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <h3>Easier than finding a needle in the haystack.</h3>
-                                <p>Sharing the same stylized design layout, these tables allows for the effective compilation and organization of data with easy access and maneuverability for users. </p>
-                                <p class="small hint-text m-t-5">VIA senior product manage
-                                    <br> for UI/UX at REVOX</p>
-                                <br>
-                                <button class="btn btn-primary btn-cons">More</button>
-                            </div>
-                        </div>
-                        <!-- END PANEL -->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -51,11 +22,11 @@
         <!-- START PANEL -->
         <div class="panel panel-transparent">
             <div class="panel-heading">
-                <div class="panel-title">Table with Dynamic Rows
+                <div class="panel-title">Spefial Price Orders
                 </div>
                 <div class="pull-right">
                     <div class="col-xs-12">
-                        <button id="add-btn" class="btn btn-complete btn-cons"> Add row</button>
+                        <button id="add-btn" class="btn btn-complete btn-cons"> Add Item</button>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -64,12 +35,13 @@
                 <table class="table table-hover demo-table-dynamic" id="tableWithDynamicRows">
                     <thead>
                     <tr>
-                        <th>Price</th>
+                        <th>Price (USD)</th>
                         <th>Flight Included</th>
                         <th>Baggage</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Boarding Type</th>
+                        <th>Transport Included</th>
                         <th>Room Type</th>
                         <th>Booking Url</th>
                         <th>Actions</th>
@@ -94,7 +66,10 @@
                                 <p>{{$order['travel_end_date']}}</p>
                             </td>
                             <td class="v-align-middle">
-                                <p>{{$order['boarding_type']['name']}}</p>
+                                <p>{{$order['boarding_type']}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{$order['transport_included']}}</p>
                             </td>
                             <td class="v-align-middle">
                                 <p>{{$order['room_type']['name']}}</p>
@@ -148,7 +123,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
-                                            <label>Price</label>
+                                            <label>Price (USD)</label>
                                             <input id="price" type="number" class="form-control">
                                         </div>
                                     </div>
@@ -194,11 +169,10 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
-                                            <label>Room Type</label>
-                                            <select id="boarding_type" class="form-control">
-                                                @foreach($boardings as $boarding)
-                                                    <option value="{{$boarding->id}}">{{$boarding->name}}</option>
-                                                    @endforeach
+                                            <label>Transport Included</label>
+                                            <select id="transport_included" class="form-control">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
                                             </select>
                                         </div>
                                     </div>
@@ -206,11 +180,11 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
-                                            <label>Room Type</label>
-                                            <select id="room_type" class="form-control">
-                                                @foreach($rooms as $room)
-                                                    <option value="{{$room->id}}">{{$room->name}}</option>
-                                                @endforeach
+                                            <label>Boarding Type</label>
+                                            <select id="boarding_type" class="form-control">
+                                                <option value="Full">Full</option>
+                                                <option value="Weekly">Weekly</option>
+                                                <option value="Maxi">Maxi</option>
                                             </select>
                                         </div>
                                     </div>
@@ -258,7 +232,8 @@
     <script src="{{asset('assets/js/datatables.js')}}" type="text/javascript"></script>
     <script>
         // Create
-        var endpoint = "{{url('api/special_price_order')}}/";
+        var endpoint = "{{url('api/special_price_order')}}";
+
         $('#add-btn').click(function(){
             openModal('new');
         });
@@ -288,8 +263,8 @@
             $('#travel_start_date').val(data.travel_start_date);
             $('#travel_end_date').val(data.travel_end_date);
             $('#boarding_type').val(data.boarding_type);
-            $('#room_type').val(data.room_type);
             $('#booking_url').val(data.booking_url);
+            $('#transport_included').val(data.transport_included);
             // Update mode to edit
             $('#save-btn').attr('data-mode', 'edit').attr('data-id', data.id);
             $('#modalSlideUp').modal('toggle');
@@ -302,8 +277,8 @@
             $('#travel_start_date').val('');
             $('#travel_end_date').val('');
             $('#boarding_type').val('');
-            $('#room_type').val('');
             $('#booking_url').val('');
+            $('#transport_included').val('');
 
             $('#modalSlideUp').modal('toggle');
             // Hide the delete button
@@ -324,7 +299,7 @@
             $.when(fetch(options))
                 .done(function(data){
                     console.log(data);
-                    location.reload();
+                    //location.reload();
                 })
                 .fail(function(err){
                     console.error(err);
@@ -333,7 +308,7 @@
         }
         function deleteForm(id){
             var options = {
-                url : endpoint+id,
+                url : endpoint+'/'+id,
                 method : 'DELETE'
             };
             $.when(fetch(options))
@@ -349,7 +324,7 @@
         function update(id){
             var data = getValues();
             var options = {
-                url : endpoint+id,
+                url : endpoint+'/'+id,
                 data : data,
                 method : 'PUT'
             };
@@ -357,7 +332,7 @@
             $.when(fetch(options))
                 .done(function(data){
                     console.log(data);
-                    location.reload();
+                    //location.reload();
                 })
                 .fail(function(err){
                     console.error(err);
@@ -372,9 +347,12 @@
                 travel_start_date : $('#travel_start_date').val(),
                 travel_end_date : $('#travel_end_date').val(),
                 boarding_type : $('#boarding_type').val(),
-                room_type: $('#room_type').val(),
+                room_type: {{$search_order->room_type}},
                 booking_url: $('#booking_url').val(),
-                search_order_id : {{$search_order->id}}
+                search_order_id : {{$search_order->id}},
+                hotel_id : {{$search_order->hotel_id}},
+                airport_id : {{$search_order->airport_id}},
+                transport_included : $('#transport_included').val()
             }
         }
 

@@ -11,7 +11,6 @@ class InternetPriceOrderController extends Controller
     public function read(){
         return InternetPriceOrder::with([
             'roomType',
-            'boardingType',
             'searchOrder',
             'hotel'
         ])->get();
@@ -24,11 +23,8 @@ class InternetPriceOrderController extends Controller
             'baggage' => 'required|boolean',
             'travel_start_date' => 'required|date',
             'travel_end_date' => 'required|date',
-<<<<<<< HEAD
-            'boarding_type' => 'required|integer|exists:boarding_types,id',
-=======
             'boarding_type' => 'required',
->>>>>>> bb934f22b25715dcc12315e022b01c022f0c8afb
+            'transport_included' => 'required|boolean',
             'hotel_id' => 'required|integer|exists:hotels,id',
             'airport_id' => 'required|integer|exists:airports,id',
             'booking_url' => 'required',

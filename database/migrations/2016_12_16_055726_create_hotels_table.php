@@ -18,9 +18,11 @@ class CreateHotelsTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('longitude');
+            $table->string('image');
+            $table->string('address');
             $table->string('latitude');
+            $table->integer('rating');
             $table->longText('description');
-            $table->longText('location')->nullable();
             $table->longText('phone')->nullable();
             $table->longText('email')->nullable();
             $table->integer('country_id')->unsigned();

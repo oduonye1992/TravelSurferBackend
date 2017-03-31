@@ -16,15 +16,18 @@ class SpecialPriceOrder extends Model
         'travel_end_date',
         'boarding_type',
         'room_type',
-        'booking_url'
+        'booking_url',
+        'hotel_id',
+        'airport_id',
+        'transport_included'
     ];
     public function RoomType(){
         return $this->belongsTo('App\HotelRoomType', 'room_type');
     }
-    public function BoardingType(){
-        return $this->belongsTo('App\BoardingType', 'boarding_type');
-    }
     public function SearchOrder(){
         return $this->belongsTo('App\SearchOrder', 'search_order_id');
+    }
+    public function Hotel(){
+        return $this->belongsTo('App\Hotel', 'hotel_id');
     }
 }

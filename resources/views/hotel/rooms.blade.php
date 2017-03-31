@@ -8,41 +8,12 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Tables</a>
+                        <a href="#">Hotel</a>
                     </li>
-                    <li><a href="#" class="active">Data Tables</a>
+                    <li><a href="#" class="active">Room Type</a>
                     </li>
                 </ul>
                 <!-- END BREADCRUMB -->
-                <div class="row">
-                    <div class="col-lg-7 col-md-6 ">
-                        <!-- START PANEL -->
-                        <div class="full-height">
-                            <div class="panel-body text-center">
-                                <img class="image-responsive-height demo-mw-600" src="{{asset('assets/img/demo/tables.jpg')}}" alt="">
-                            </div>
-                        </div>
-                        <!-- END PANEL -->
-                    </div>
-                    <div class="col-lg-5 col-md-6 ">
-                        <!-- START PANEL -->
-                        <div class="panel panel-transparent">
-                            <div class="panel-heading">
-                                <div class="panel-title">Getting started
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <h3>Easier than finding a needle in the haystack.</h3>
-                                <p>Sharing the same stylized design layout, these tables allows for the effective compilation and organization of data with easy access and maneuverability for users. </p>
-                                <p class="small hint-text m-t-5">VIA senior product manage
-                                    <br> for UI/UX at REVOX</p>
-                                <br>
-                                <button class="btn btn-primary btn-cons">More</button>
-                            </div>
-                        </div>
-                        <!-- END PANEL -->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -51,7 +22,7 @@
         <!-- START PANEL -->
         <div class="panel panel-transparent">
             <div class="panel-heading">
-                <div class="panel-title">Table with Dynamic Rows
+                <div class="panel-title">Room Type
                 </div>
                 <div class="pull-right">
                     <div class="col-xs-12">
@@ -81,7 +52,7 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu" style="width: 141px;">
-                                        <li><a data-obj="{{json_encode($room)}}" class="edit-btn" href="#">Edit Image</a>
+                                        <li><a data-obj="{{json_encode($room)}}" class="edit-btn" href="#">Edit Room</a>
                                         </li>
                                         <li><a href="#" data-id="{{$room['id']}}" class="delete-btn btn-danger btn btn-cons">Delete Image</a>
                                         </li>
@@ -111,7 +82,7 @@
                     <div class="modal-header clearfix text-left">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
                         </button>
-                        <h5 style="text-align: center;">Add Airport</h5>
+                        <h5 style="text-align: center;">Add Room Type</h5>
                         <p class="p-b-10"></p>
                     </div>
                     <div class="modal-body">
@@ -183,8 +154,6 @@
         function openEditModal(data){
             // Populate the data and show modal
             $('#name').val(data.image);
-
-            // Update mode to edit
             $('#save-btn').attr('data-mode', 'edit').attr('data-id', data.id);
             $('#modalSlideUp').modal('toggle');
         }
@@ -200,7 +169,7 @@
         }
         function save(data){
             var options = {
-                url : endpoint+'/'+id,
+                url : endpoint,
                 data : data,
                 method : 'POST'
             };

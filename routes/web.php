@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('docs', function(){
-    return view('index');
+Route::get('/', function(){
+    return redirect('/admin/hotels');
 });
 
 Route::group(['prefix' => 'admin'], function () {

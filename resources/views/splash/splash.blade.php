@@ -8,41 +8,12 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Tables</a>
+                        <a href="#">Home</a>
                     </li>
-                    <li><a href="#" class="active">Data Tables</a>
+                    <li><a href="#" class="active">SplashScreen</a>
                     </li>
                 </ul>
                 <!-- END BREADCRUMB -->
-                <div class="row">
-                    <div class="col-lg-7 col-md-6 ">
-                        <!-- START PANEL -->
-                        <div class="full-height">
-                            <div class="panel-body text-center">
-                                <img class="image-responsive-height demo-mw-600" src="{{asset('assets/img/demo/tables.jpg')}}" alt="">
-                            </div>
-                        </div>
-                        <!-- END PANEL -->
-                    </div>
-                    <div class="col-lg-5 col-md-6 ">
-                        <!-- START PANEL -->
-                        <div class="panel panel-transparent">
-                            <div class="panel-heading">
-                                <div class="panel-title">Getting started
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <h3>Easier than finding a needle in the haystack.</h3>
-                                <p>Sharing the same stylized design layout, these tables allows for the effective compilation and organization of data with easy access and maneuverability for users. </p>
-                                <p class="small hint-text m-t-5">VIA senior product manage
-                                    <br> for UI/UX at REVOX</p>
-                                <br>
-                                <button class="btn btn-primary btn-cons">More</button>
-                            </div>
-                        </div>
-                        <!-- END PANEL -->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -55,7 +26,7 @@
                 </div>
                 <div class="pull-right">
                     <div class="col-xs-12">
-                        <button id="add-btn" class="btn btn-complete btn-cons"> Add row</button>
+                        <button id="add-btn" class="btn btn-complete btn-cons"> Add a SplashScreen </button>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -165,13 +136,13 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group form-group-default">
-                                            <label>Background Colour</label>
+                                            <label>Background Colour (Hex)</label>
                                             <input id="backgroundColor" type="text" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-group-default">
-                                            <label>Font Colour</label>
+                                            <label>Font Colour (Hex)</label>
                                             <input id="fontColor" type="text" class="form-control">
                                         </div>
                                     </div>

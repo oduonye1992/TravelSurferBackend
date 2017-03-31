@@ -22,7 +22,8 @@ class CreateSearchOrderTable extends Migration
             $table->date('end_date');
             $table->integer('room_type')->unsigned();
             $table->boolean('boarding');
-            $table->boolean('transport')->nullable();
+            $table->boolean('transport')->nulla
+            ble();
             $table->integer('adults');
             $table->integer('children');
             // Meta Data

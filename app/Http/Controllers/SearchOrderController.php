@@ -15,7 +15,6 @@ class SearchOrderController extends Controller
             'airport',
             'children',
             'roomType',
-            'boardingType'
         ])->get();
     }
     public function add(Request $request) {

@@ -18,15 +18,17 @@ class SpecialPriceController extends Controller
     public function add(Request $request) {
         $rules = [
             'search_order_id' => 'required|integer|exists:search_orders,id',
-            'hotel_id' => 'required|integer|exists:hotels,id',
             'price' => 'required|integer',
             'flight_included' => 'required|boolean',
             'baggage' => 'required|boolean',
             'travel_start_date' => 'required|date',
             'travel_end_date' => 'required|date',
-            'boarding_type' => 'required|integer',
+            'boarding_type' => 'required',
+            'transport_included' => 'required|boolean',
+            'hotel_id' => 'required|integer|exists:hotels,id',
+            'airport_id' => 'required|integer|exists:airports,id',
             'booking_url' => 'required',
-            'room_type' => 'required|integer|exists:boarding_types,id'
+            'room_type' => 'required|integer|exists:hotels_room_type,id'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {

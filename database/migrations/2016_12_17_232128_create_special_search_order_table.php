@@ -19,19 +19,21 @@ class CreateSpecialSearchOrderTable extends Migration
             $table->integer('search_order_id')->unsigned();
             $table->integer('price');
             $table->boolean('flight_included');
+            $table->boolean('transport_included');
             $table->boolean('baggage');
             $table->date('travel_start_date');
             $table->date('travel_end_date');
-            $table->integer('boarding_type');
+            $table->enum('boarding_type', ['Full', 'Weekly', 'Maxi']);
             $table->integer('room_type')->unsigned();
             $table->string('booking_url')->nullable();
+
             $table->integer('hotel_id')->unsigned();
             $table->integer('airport_id')->unsigned();
 
-            $table->foreign('search_order_id')->references('id')->on('search_orders') ->onDelete('cascade');;
+            $table->foreign('search_order_id')->references('id')->on('search_orders');
+            $table->foreign('room_type')->references('id')->on('hotels_room_type');
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->foreign('airport_id')->references('id')->on('airports');
-            $table->foreign('room_type')->references('id')->on('hotels_room_type');
         });
     }
 

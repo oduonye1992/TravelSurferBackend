@@ -8,19 +8,25 @@ use Illuminate\Http\Request;
 
 class HotelsController extends Controller
 {
-    public function read(){
-        return Hotel::with(['country', 'images', 'rooms'])->get();
+    public function read(Request $request){
+        if (isset($request->q)){
+            return Hotel::with(['country', 'images', 'rooms'])->where('id', $request->id)->get();
+        } else {
+            return Hotel::with(['country', 'images', 'rooms'])->get();
+        }
     }
     public function suggest(Request $request){
-        return $this->read();
         $q = $request->q;
-        return Hotel::where('name', 'like', "%$q")->with(['country', 'images', 'rooms'])->get();
+        return Hotel::where('name', 'like', "%$q%")->with(['country', 'images', 'rooms'])->get();
     }
     public function add(Request $request) {
         $rules = [
             'name' => 'required',
             'longitude' => 'required',
             'latitude' => 'required',
+            'image' => 'required',
+            'rating' => 'required|integer',
+            'address' => 'required',
             'description' => 'required',
             'country_id' => 'required|integer|exists:countries,id'
         ];

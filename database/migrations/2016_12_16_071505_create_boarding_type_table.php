@@ -16,7 +16,7 @@ class CreateBoardingTypeTable extends Migration
         Schema::create('boarding_types', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('name');
+            $table->enum('name', ['1', '2', '3']);
         });
     }
 

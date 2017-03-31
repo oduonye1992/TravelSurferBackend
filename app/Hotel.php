@@ -16,6 +16,9 @@ class Hotel extends Model
         'location',
         'phone',
         'email',
+        'image',
+        'address',
+        'rating'
     ];
     public function Country(){
         return $this->belongsTo('App\Country', 'country_id');

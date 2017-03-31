@@ -8,40 +8,14 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Tables</a>
+                        <a href="#">Home</a>
                     </li>
-                    <li><a href="#" class="active">Data Tables</a>
+                    <li><a href="#" class="active">Hotels</a>
                     </li>
                 </ul>
                 <!-- END BREADCRUMB -->
                 <div class="row">
-                    <div class="col-lg-7 col-md-6 ">
-                        <!-- START PANEL -->
-                        <div class="full-height">
-                            <div class="panel-body text-center">
-                                <img class="image-responsive-height demo-mw-600" src="{{asset('assets/img/demo/tables.jpg')}}" alt="">
-                            </div>
-                        </div>
-                        <!-- END PANEL -->
-                    </div>
-                    <div class="col-lg-5 col-md-6 ">
-                        <!-- START PANEL -->
-                        <div class="panel panel-transparent">
-                            <div class="panel-heading">
-                                <div class="panel-title">Getting started
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <h3>Easier than finding a needle in the haystack.</h3>
-                                <p>Sharing the same stylized design layout, these tables allows for the effective compilation and organization of data with easy access and maneuverability for users. </p>
-                                <p class="small hint-text m-t-5">VIA senior product manage
-                                    <br> for UI/UX at REVOX</p>
-                                <br>
-                                <button class="btn btn-primary btn-cons">More</button>
-                            </div>
-                        </div>
-                        <!-- END PANEL -->
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -51,7 +25,7 @@
         <!-- START PANEL -->
         <div class="panel panel-transparent">
             <div class="panel-heading">
-                <div class="panel-title">Table with Dynamic Rows
+                <div class="panel-title">LIST OF HOTELS
                 </div>
                 <div class="pull-right">
                     <div class="col-xs-12">
@@ -66,7 +40,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Location</th>
+                        <th>Address</th>
                         <th>Phone</th>
                         <th>Email</th>
                         <th>Country</th>
@@ -83,7 +57,7 @@
                                 <p>{{$hotel['description']}}</p>
                             </td>
                             <td class="v-align-middle">
-                                <p>{{$hotel['location']}}</p>
+                                <p>{{$hotel['address']}}</p>
                             </td>
                             <td class="v-align-middle">
                                 <p>{{$hotel['phone']}}</p>
@@ -162,7 +136,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
                                             <label>Location</label>
-                                            <input id="location" type="text" class="form-control">
+                                            <input id="address" type="text" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -179,6 +153,22 @@
                                         <div class="form-group form-group-default">
                                             <label>Email</label>
                                             <input id="email" type="email" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Rate this Hotel (1 to 5)</label>
+                                            <input id="rating" type="number" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Hotel Image</label>
+                                            <input id="image" type="text" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -269,9 +259,11 @@
             $('#country').val(data.country_id);
             $('#longitude').val(data.longitude);
             $('#latitude').val(data.latitude);
-            $('#location').val(data.location);
+            $('#address').val(data.address);
             $('#phone').val(data.phone);
+            $('#image').val(data.image);
             $('#email').val(data.email);
+            $('#rating').val(data.rating);
             // Update mode to edit
             $('#save-btn').attr('data-mode', 'edit').attr('data-id', data.id);
             $('#modalSlideUp').modal('toggle');
@@ -281,9 +273,11 @@
             $('#description').val('');
             $('#longitude').val('');
             $('#latitude').val('');
-            $('#location').val('');
+            $('#address').val('');
             $('#phone').val('');
             $('#email').val('');
+            $('#rating').val('');
+            $('#image').val('');
             $('#modalSlideUp').modal('toggle');
             // Hide the delete button
             $('#delete-btn').hide();
@@ -340,7 +334,6 @@
                     })
                     .fail(function(err){
                         console.error(err);
-                        alert('Error: '+err.message +' | '+JSON.stringify(err));
                     })
         }
         function getValues(){
@@ -348,10 +341,12 @@
                 name : $('#name').val(),
                 description : $('#description').val(),
                 country_id : $('#country').val(),
-                longitude : $('#longitude').val(),
+                address : $('#address').val(),
                 latitude : $('#latitude').val(),
-                location : $('#location').val(),
+                longitude : $('#longitude').val(),
                 phone : $('#phone').val(),
+                image : $('#image').val(),
+                rating : $('#rating').val(),
                 email : $('#email').val(),
             }
         }
