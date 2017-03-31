@@ -25,7 +25,7 @@ class CreateSearchOrderTable extends Migration
             $table->boolean('transport')->nullable();
             $table->integer('adults');
             $table->integer('children');
-            // Meta Data
+            // Meta Data //
             $table->string('email')->nullable();
             $table->string('uuid');
 
