@@ -10,7 +10,7 @@
                     <li>
                         <a href="#">Search Order</a>
                     </li>
-                    <li><a href="#" class="active">Internet Price Order</a>
+                    <li><a href="#" class="active">Internet Price Offer</a>
                     </li>
                 </ul>
                 <!-- END BREADCRUMB -->

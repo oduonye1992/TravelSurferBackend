@@ -92,6 +92,6 @@ class ViewController extends Controller
         // roomtype
         $rooms = HotelRoomType::where('hotel_id', $hotel)->get();
         $boardings = BoardingType::all();
-        return view('internet_order.internet_order', ['orders' => $internet_order, 'search_order' => $order, 'boardings'=>$boardings, 'rooms'=>$rooms]);
+        return view('special_order.special_order', ['orders' => $internet_order, 'search_order' => $order, 'boardings'=>$boardings, 'rooms'=>$rooms]);
     }
 }

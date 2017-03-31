@@ -114,7 +114,7 @@
                     <div class="modal-header clearfix text-left">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
                         </button>
-                        <h5 style="text-align: center;">Add Internet Order</h5>
+                        <h5 style="text-align: center;">Add Special Offer</h5>
                         <p class="p-b-10"></p>
                     </div>
                     <div class="modal-body">
@@ -232,7 +232,7 @@
     <script src="{{asset('assets/js/datatables.js')}}" type="text/javascript"></script>
     <script>
         // Create
-        var endpoint = "{{url('api/special_price_order')}}";
+        var endpoint = "{{url('api/special_search_order')}}";
 
         $('#add-btn').click(function(){
             openModal('new');
@@ -332,7 +332,7 @@
             $.when(fetch(options))
                 .done(function(data){
                     console.log(data);
-                    //location.reload();
+                    location.reload();
                 })
                 .fail(function(err){
                     console.error(err);
