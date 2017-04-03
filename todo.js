@@ -1,11 +1,8 @@
 /*
-TODO Do the Following
-Hotel
-
-1. Hotel
-2. Hotel Images
-
-3. Airports
-4. Airports Images
+@TODO
+1. Select API for search orders with a specific UUID.
+2. Test posting from the mobile phone.
+3. Remove double taps when keyboard is open.
+3. Push notification from the server to the mobile device. ---
 
  */

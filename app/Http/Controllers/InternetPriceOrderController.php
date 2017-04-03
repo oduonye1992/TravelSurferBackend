@@ -3,17 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\InternetPriceOrder;
+use App\SearchOrder;
+use App\Utility;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Validator;
 
 class InternetPriceOrderController extends Controller
 {
-    public function read(){
+    public function read(Request $request){
+        $uuid = $request->uuid;
+        $uuid = 'f71bf27f5b05d60f';
+        // Get search orders for that email.
+        // Ge internet orders for that seaeth order
+        $orders = SearchOrder::where('uuid', $uuid)->get();
+        $formatted = [];
+        foreach ($orders as $order){
+            array_push($formatted, $order->id);
+        }
         return InternetPriceOrder::with([
             'roomType',
             'searchOrder',
             'hotel'
-        ])->get();
+        ])->whereIn('search_order_id', $formatted)->get();
+    }
+    public function push(InternetPriceOrder $order) {
+        try {
+            // Get message
+            $search_order = SearchOrder::with(['hotel', 'airport'])->findOrFail($order->search_order_id);
+            // Get uuid, from search order;
+            // Send message to user
+            $message = "New update: ".$search_order->hotel->name." for ".$order->price;
+            Utility::push($message, null);
+            return response("Notification sent!", Response::HTTP_OK);
+        } catch (\Exception $e){
+            return response("An erro has occured and has been logged".$e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
     public function add(Request $request) {
         $rules = [
@@ -32,7 +57,7 @@ class InternetPriceOrderController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return $validator->errors()->all();
+            return response($validator->errors()->all(), Response::HTTP_BAD_REQUEST);
         }
         return InternetPriceOrder::create($request->all());
     }

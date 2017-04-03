@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\SearchOrder;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Validator;
 
@@ -34,7 +35,7 @@ class SearchOrderController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return $validator->errors()->all();
+            return response($validator->errors()->all(), Response::HTTP_BAD_REQUEST);
         }
         return SearchOrder::create($request->all());
     }

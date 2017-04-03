@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\SearchOrder;
 use App\SpecialPriceOrder;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Validator;
 
 class SpecialPriceController extends Controller
 {
     public function read(){
+        $uuid = $request->uuid;
+        //$uuid = '7F1B63F4-A2BC-4290-8ABC-2A6EB8C118CE';
+        // Get search orders for that email.
+        // Ge internet orders for that seaeth order
+        $orders = SearchOrder::where('uuid', $uuid)->get();
+        $formatted = [];
+        foreach ($orders as $order){
+            array_push($formatted, $order->id);
+        }
         return SpecialPriceOrder::with([
             'roomType',
-            'boardingType',
-            'searchOrder'
-        ])->get();
+            'searchOrder',
+            'hotel'
+        ])->whereIn('search_order_id', $formatted)->get();
     }
     public function add(Request $request) {
         $rules = [
@@ -32,7 +43,7 @@ class SpecialPriceController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return $validator->errors()->all();
+            return response($validator->errors()->all(), Response::HTTP_BAD_REQUEST);
         }
         return SpecialPriceOrder::create($request->all());
     }

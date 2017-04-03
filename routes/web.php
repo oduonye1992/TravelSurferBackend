@@ -14,6 +14,10 @@
 Route::get('/', function(){
     return redirect('/admin/hotels');
 });
+Route::get('/push', function(){
+     $client = new Berkayk\OneSignal\OneSignalClient('2e098240-5844-4ac2-baff-22d3ce23f4a5', 'Y2VjYTk2YjctOGQ0ZS00MmYwLThmYWMtYWY3ZmY3OGFhNTY5', 'YjQ1MTY4ODYtYWRhYy00ZGMzLThiNGYtNTU2ZmEwNzdhOTU0');
+     $client->sendNotificationToAll("Some Message", $url = null, $data = null, $buttons = null, $schedule = null);
+});
 
 Route::group(['prefix' => 'admin'], function () {
     // Hotels

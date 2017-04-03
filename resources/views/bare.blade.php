@@ -146,6 +146,61 @@
 <script src="{{asset('assets/js/scripts.js')}}" type="text/javascript"></script>
 <!-- END PAGE LEVEL JS -->
 <script>
+    var notify = function(_options){
+        var defaults = {
+            style : 'Notification Bar',
+            message : '',
+            type : 'info', //Info, Success, Error etc
+            timeout : 0,
+            position : 'top-right'
+        };
+        var options = Object.assign({}, defaults, _options);
+        var style = options.style;
+        var message = options.message;
+        var type = options.type;
+        var timeout = options.timeout;
+        var position = options.position;
+        if (style == 'Notification Bar') {
+            // Show an bar notification attached to top and bottom of the screen
+            $('body').pgNotification({
+                style: 'bar',
+                message: message,
+                position: position,
+                timeout: timeout,
+                type: type
+            }).show();
+        } else if (style == 'Bouncy Flip') {
+            // Show a flipping notification animated
+            // using CSS3 transforms and animations
+            $('body').pgNotification({
+                style: 'flip',
+                message: message,
+                position: position,
+                timeout: timeout,
+                type: type
+            }).show();
+        } else if (style == 'Circle Notification') {
+            $('body').pgNotification({
+                style: 'circle',
+                title: 'John Doe',
+                message: message,
+                position: position,
+                timeout: timeout,
+                type: type,
+                thumbnail: '<img width="40" height="40" style="display: inline-block;" src="assets/img/profiles/avatar2x.jpg" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" alt="">'
+            }).show();
+        } else if (style == 'Simple Alert') {
+            $('body').pgNotification({
+                style: 'simple',
+                message: message,
+                position: position,
+                timeout: timeout,
+                type: type
+            }).show();
+        } else {
+            return false;
+        }
+    };
     var fetch = function(options){
         var txDeferred = $.Deferred();
         $.ajax({
@@ -154,7 +209,13 @@
             data : options.data || {},
             headers : options.headers || {},
             success : txDeferred.resolve,
-            error : txDeferred.reject
+            error : function(err){
+                notify({
+                    message : err.responseText,
+                    type : 'error'
+                });
+                txDeferred.reject();
+            }
         });
         return txDeferred.promise();
     };

@@ -83,9 +83,8 @@
                                         </li>
                                         <li><a href="#" data-id="{{$hotel['id']}}" class="delete-btn btn-danger btn btn-cons">Delete Hotel</a>
                                         </li>
-                                    </ul>8
+                                    </ul>
                                 </div>
-
                             </td>
                         </tr>
                     @endforeach
@@ -351,17 +350,6 @@
             }
         }
 
-        var fetch = function(options){
-            var txDeferred = $.Deferred();
-            $.ajax({
-                url : options.url,
-                method : options.method || 'GET',
-                data : options.data || {},
-                headers : options.headers || {},
-                success : txDeferred.resolve,
-                error : txDeferred.reject
-            });
-            return txDeferred.promise();
-        };
+
     </script>
     @endsection

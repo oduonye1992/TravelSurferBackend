@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Airport;
+use Illuminate\Http\Response;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class AirportsController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return $validator->errors()->all();
+            return response($validator->errors()->all(), Response::HTTP_BAD_REQUEST);
         }
         return Airport::create($request->all());
     }

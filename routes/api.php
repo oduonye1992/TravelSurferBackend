@@ -91,6 +91,7 @@ Route::group(['prefix' => 'internet_price_order'], function () {
     Route::post('', 'InternetPriceOrderController@add');
     Route::get('/{internet_price_order}', 'InternetPriceOrderController@getByID');
     Route::put('/{internet_price_order}', 'InternetPriceOrderController@update');
+    Route::post('/{internet_price_order}/push', 'InternetPriceOrderController@push');
     Route::delete('/{internet_price_order}', 'InternetPriceOrderController@delete');
 });
 

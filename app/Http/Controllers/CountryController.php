@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Country;
+use Illuminate\Http\Response;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class CountryController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return $validator->errors()->all();
+            return response($validator->errors()->all(), Response::HTTP_BAD_REQUEST);
         }
         return Country::create($request->all());
     }

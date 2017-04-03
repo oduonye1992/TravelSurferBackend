@@ -86,6 +86,8 @@
                                     <ul class="dropdown-menu" role="menu" style="width: 141px;">
                                         <li><a data-obj="{{json_encode($order)}}" class="edit-btn" href="#">Edit</a>
                                         </li>
+                                        <li><a data-obj="{{json_encode($order)}}" class="push-btn" href="#">Send Push Notification</a>
+                                        </li>
                                         <li><a href="#" data-id="{{$order['id']}}" class="delete-btn btn-danger btn btn-cons">Delete</a>
                                         </li>
                                     </ul>
@@ -248,12 +250,34 @@
         $('.edit-btn').click(function(){
             openEditModal(JSON.parse($(this).attr('data-obj')));
         });
+        $('.push-btn').click(function(){
+            push(JSON.parse($(this).attr('data-obj')));
+        });
         $('.delete-btn').click(function(){
             if (window.confirm('Are you sure you want to delete this Airport')){
                 deleteForm($(this).attr('data-id'));
             }
         });
-
+        function push(data){
+            var options = {
+                url : endpoint+'/'+data.id+'/push',
+                data : data,
+                method : 'POST'
+            };
+            console.log(data);
+            $.when(fetch(options))
+                .done(function(data){
+                    console.log(data);
+                    notify({
+                        message : "Notification sent!",
+                        type : 'success'
+                    });
+                })
+                .fail(function(err){
+                    console.error(err);
+                    notify('An error occured. Please try again', 'danger');
+                });
+        }
         function openEditModal(data){
             // Populate the data and show modal
             $('#title').val(data.title);
@@ -355,18 +379,5 @@
                 transport_included : $('#transport_included').val()
             }
         }
-
-        var fetch = function(options){
-            var txDeferred = $.Deferred();
-            $.ajax({
-                url : options.url,
-                method : options.method || 'GET',
-                data : options.data || {},
-                headers : options.headers || {},
-                success : txDeferred.resolve,
-                error : txDeferred.reject
-            });
-            return txDeferred.promise();
-        };
     </script>
 @endsection
