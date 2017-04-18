@@ -13,7 +13,7 @@ class InternetPriceOrderController extends Controller
 {
     public function read(Request $request){
         $uuid = $request->uuid;
-        $uuid = 'f71bf27f5b05d60f';
+        //$uuid = 'f71bf27f5b05d60f';
         // Get search orders for that email.
         // Ge internet orders for that seaeth order
         $orders = SearchOrder::where('uuid', $uuid)->get();
