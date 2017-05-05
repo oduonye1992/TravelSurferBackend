@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "afdb425517085405f1f89fba7a01e260",
+    "content-hash": "8e20e0e28b26a0a6a11ce3abcc51f24e",
     "packages": [
         {
             "name": "berkayk/onesignal-laravel",
