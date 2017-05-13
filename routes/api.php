@@ -120,6 +120,7 @@ Route::group(['prefix' => 'splash_screen'], function () {
 });
 
 
+Route::get('import', 'UtilityController@import');
 
 Route::model('hotel', 'App\Hotel');
 Route::model('airport', 'App\Airport');
