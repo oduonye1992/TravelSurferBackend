@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Country;
 use App\Hotel;
 use App\HotelImages;
+use App\HotelRoomType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -32,6 +33,12 @@ EOD;
             foreach ($hotel->images as $image) {
                 HotelImages::create([
                     'image' => $image->URL,
+                    'hotel_id' => $genHotel->id
+                ]);
+            }
+            foreach ($hotel->attributes as $attributes) {
+                HotelRoomType::create([
+                    'name' => $attributes->AttributeDesc,
                     'hotel_id' => $genHotel->id
                 ]);
             }
