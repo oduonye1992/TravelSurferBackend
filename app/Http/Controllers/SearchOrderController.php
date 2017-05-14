@@ -30,8 +30,7 @@ class SearchOrderController extends Controller
             //'transport' => 'required|boolean',
             'adults' => 'required|integer',
             'children' => 'required|integer',
-            'uuid' => 'required',
-            //'uuid' => 'required'
+            'uuid' => 'required'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
